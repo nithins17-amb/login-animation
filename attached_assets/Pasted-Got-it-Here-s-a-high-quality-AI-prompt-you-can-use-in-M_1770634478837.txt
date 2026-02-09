@@ -1,0 +1,63 @@
+Got it 😎
+Here’s a **high-quality AI prompt** you can use in **Midjourney / DALL·E / Leonardo / Firefly** to generate a **liquid glass animated login page visual** for a **language training app**.
+
+---
+
+## 🔮 AI PROMPT – LIQUID GLASS LOGIN PAGE (LANGUAGE TRAINING APP)
+
+**Prompt:**
+
+> A modern login page UI for a language learning app, liquid glassmorphism design, frosted transparent glass card floating at the center, smooth liquid blur edges, soft glowing borders, animated gradient background in blue, purple and aqua tones, floating English words like “Learn”, “Speak”, “Fluent”, “Practice” drifting in the background, premium futuristic UI, clean typography, minimal yet highly attractive layout, depth and reflections like real glass, soft light refractions, subtle motion blur, client-ready UI mockup, ultra-realistic, high resolution, 4K, modern SaaS style, Apple Vision Pro inspired glass effect, elegant and professional
+
+---
+
+## 🎨 STYLE MODIFIERS (Optional – Add at the End)
+
+Use these depending on your tool:
+
+* **UI/UX focus:**
+  `UI design, app interface, login screen, glass UI`
+
+* **More liquid feel:**
+  `fluid gradients, liquid motion, organic glass waves`
+
+* **Client presentation:**
+  `product showcase, startup pitch, Dribbble style, Behance style`
+
+* **Lighting:**
+  `soft neon lighting, volumetric light, reflections`
+
+---
+
+## ❌ NEGATIVE PROMPT (Very Important)
+
+```
+low quality, cartoon, flat design, dull colors, cluttered UI, text-heavy, watermark, logo distortion, poor alignment
+```
+
+---
+
+## 📐 IMAGE SETTINGS (Recommended)
+
+* **Aspect Ratio:** 9:16 or 16:9
+* **Resolution:** 4K
+* **Style strength:** Medium–High
+* **Motion blur:** Subtle
+
+---
+
+## 🧠 Pro Tip (Client-Winning Trick)
+
+Generate **2 versions**:
+1️⃣ **Static premium UI mockup**
+2️⃣ **Animated liquid background version**
+
+Show both → client thinks it’s a **full product vision**, not just a login page 😏🔥
+
+If you want, I can also:
+
+* Tailor this prompt **exactly for Midjourney / DALL·E**
+* Create a **frontend-only AI prompt** (HTML/CSS/JS)
+* Add a **Duolingo-style character in glass**
+
+Just say the word 🌊✨
