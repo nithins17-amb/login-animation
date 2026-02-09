@@ -1,9 +1,38 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { LoginForm } from "@/components/LoginForm";
 import { FloatingWord } from "@/components/FloatingWord";
-import liquidBg from "@/assets/images/liquid-bg.png"; // Assuming the image was generated here
-import { motion } from "framer-motion";
+import liquidBg from "@/assets/images/liquid-bg.png";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+
+const slides = [
+  {
+    title: "Master New Languages",
+    description: "Immerse yourself in a world of words and cultures.",
+    accent: "from-blue-400 to-cyan-400",
+  },
+  {
+    title: "Speak with Confidence",
+    description: "Practice real-world conversations with our AI tutor.",
+    accent: "from-purple-400 to-pink-400",
+  },
+  {
+    title: "Global Connection",
+    description: "Join a community of millions learning together.",
+    accent: "from-emerald-400 to-teal-400",
+  }
+];
 
 export default function AuthPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const words = [
     { text: "Learn", className: "top-[10%] left-[10%] text-6xl" },
     { text: "Speak", className: "top-[20%] right-[15%] text-7xl" },
@@ -14,58 +43,72 @@ export default function AuthPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden flex items-center justify-center bg-black">
+    <div className="min-h-screen w-full relative overflow-hidden flex flex-col lg:flex-row bg-black">
       {/* Background Image Layer */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-80"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105"
         style={{ backgroundImage: `url(${liquidBg})` }}
       />
       
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-900/30 via-purple-900/30 to-black/60 mix-blend-overlay" />
-      
-      {/* Floating Words Layer */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {words.map((word, i) => (
-          <FloatingWord 
-            key={i} 
-            word={word.text} 
-            className={word.className} 
-            delay={i * 0.5} 
-          />
-        ))}
+      {/* Left Side: Animated Slides */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-8 lg:px-24 py-12 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          {words.map((word, i) => (
+            <FloatingWord 
+              key={i} 
+              word={word.text} 
+              className={word.className} 
+              delay={i * 0.5} 
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10 max-w-xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <motion.div 
+                className={`h-1 w-12 rounded-full bg-gradient-to-r ${slides[currentSlide].accent} mb-6`}
+                layoutId="activeBar"
+              />
+              <h2 className="text-5xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
+                {slides[currentSlide].title}
+              </h2>
+              <p className="text-xl text-white/60 mb-8 max-w-md leading-relaxed">
+                {slides[currentSlide].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex gap-3">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === currentSlide ? "w-8 bg-white" : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Glass Panel Content */}
-      <div className="relative z-10 w-full px-4 flex justify-center">
+      {/* Right Side: Login Form */}
+      <div className="relative z-10 flex-1 flex items-center justify-center p-6 bg-white/5 backdrop-blur-md lg:backdrop-blur-none lg:bg-transparent border-t lg:border-t-0 lg:border-l border-white/10">
         <LoginForm />
       </div>
 
       {/* Decorative Orbs */}
       <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity,
-          ease: "easeInOut" 
-        }}
-        className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none"
-      />
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2 
-        }}
-        className="absolute bottom-[-100px] right-[-100px] w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"
       />
     </div>
   );
